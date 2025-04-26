@@ -16,6 +16,7 @@ It allows creating, assigning, and tracking tasks for different users.
 
 ## Project Structure
 
+``` bash
 TaskFlow/
 │
 ├── TaskFlow.API           # API and Controllers
@@ -23,6 +24,7 @@ TaskFlow/
 ├── TaskFlow.Domain        # Entities and Interfaces
 ├── TaskFlow.Infrastructure# Data Persistence and External Services
 └── TaskFlow.sln           # Main Solution
+``` 
 
 
 ## Main Features
