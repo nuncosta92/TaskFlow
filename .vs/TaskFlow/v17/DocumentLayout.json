@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.application\\services\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|solutionrelative:taskflow.application\\services\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|solutionrelative:taskflow.application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.application\\interfaces\\itaskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|solutionrelative:taskflow.application\\interfaces\\itaskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.application\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40479784-416E-4B9A-BF94-AF256427590A}|TaskFlow.Application\\TaskFlow.Application.csproj|solutionrelative:taskflow.application\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D69C19E-671E-4E8B-8BAF-B3C12F8A34FA}|TaskFlow.Domain\\TaskFlow.Domain.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.domain\\entities\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D69C19E-671E-4E8B-8BAF-B3C12F8A34FA}|TaskFlow.Domain\\TaskFlow.Domain.csproj|solutionrelative:taskflow.domain\\entities\\taskitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D69C19E-671E-4E8B-8BAF-B3C12F8A34FA}|TaskFlow.Domain\\TaskFlow.Domain.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D69C19E-671E-4E8B-8BAF-B3C12F8A34FA}|TaskFlow.Domain\\TaskFlow.Domain.csproj|solutionrelative:taskflow.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D69C19E-671E-4E8B-8BAF-B3C12F8A34FA}|TaskFlow.Domain\\TaskFlow.Domain.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.domain\\enums\\taskstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D69C19E-671E-4E8B-8BAF-B3C12F8A34FA}|TaskFlow.Domain\\TaskFlow.Domain.csproj|solutionrelative:taskflow.domain\\enums\\taskstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{42279656-0376-4CD2-8297-B526D11D0C72}|TaskFlow.API\\TaskFlow.API.csproj|c:\\users\\nuno_\\documents\\dev\\repos\\taskflow\\taskflow.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42279656-0376-4CD2-8297-B526D11D0C72}|TaskFlow.API\\TaskFlow.API.csproj|solutionrelative:taskflow.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +47,97 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TaskService.cs",
+              "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Services\\TaskService.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Application\\Services\\TaskService.cs",
+              "ToolTip": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Services\\TaskService.cs",
+              "RelativeToolTip": "TaskFlow.Application\\Services\\TaskService.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAA9wD8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T13:39:00.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Application\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Services\\UserService.cs",
+              "RelativeToolTip": "TaskFlow.Application\\Services\\UserService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T13:26:36.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ITaskService.cs",
+              "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Interfaces\\ITaskService.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Application\\Interfaces\\ITaskService.cs",
+              "ToolTip": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Interfaces\\ITaskService.cs",
+              "RelativeToolTip": "TaskFlow.Application\\Interfaces\\ITaskService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T13:23:24.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Application\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Application\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "TaskFlow.Application\\Interfaces\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T13:22:22.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaskStatus.cs",
+              "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Domain\\Enums\\TaskStatus.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Domain\\Enums\\TaskStatus.cs",
+              "ToolTip": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Domain\\Enums\\TaskStatus.cs",
+              "RelativeToolTip": "TaskFlow.Domain\\Enums\\TaskStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T13:17:14.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskItem.cs",
+              "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Domain\\Entities\\TaskItem.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Domain\\Entities\\TaskItem.cs",
+              "ToolTip": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Domain\\Entities\\TaskItem.cs",
+              "RelativeToolTip": "TaskFlow.Domain\\Entities\\TaskItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T13:15:38.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "TaskFlow.Domain\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.Domain\\Entities\\User.cs",
+              "RelativeToolTip": "TaskFlow.Domain\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T13:15:24.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\nuno_\\Documents\\Dev\\Repos\\TaskFlow\\TaskFlow.API\\Program.cs",
               "RelativeDocumentMoniker": "TaskFlow.API\\Program.cs",
