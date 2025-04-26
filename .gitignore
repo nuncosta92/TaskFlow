@@ -1,0 +1,52 @@
+# User-specific files
+.idea/
+.vs/
+.vscode/
+# Windows Installer files
+Thumbs.db
+ehthumbs.db
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]ebug-windows/
+[Dd]ist-windows/
+[Dd]ebug-linux/
+[Dd]ebug-osx/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Windows Installer files
+*.vsix
+
+# .NET Core build output
+bin/
+obj/
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
