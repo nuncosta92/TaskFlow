@@ -1,52 +1,59 @@
-# User-specific files
-.idea/
+# Ignore Visual Studio temporary files
 .vs/
-.vscode/
-# Windows Installer files
-Thumbs.db
-ehthumbs.db
-
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Dd]ist/
-[Dd]ebug-windows/
-[Dd]ist-windows/
-[Dd]ebug-linux/
-[Dd]ebug-osx/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# .NET Core
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# Windows Installer files
-*.vsix
-
-# .NET Core build output
-bin/
-obj/
-
-# JetBrains Rider
-.idea/
-
-# User-specific files
-*.suo
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Ignore build outputs
+bin/
+obj/
+out/
 
-# ASP.NET Scaffolding
-ScaffoldingReadMe.txt
+# Ignore NuGet packages
+*.nupkg
+# Ignore local NuGet config
+NuGet.config
+
+# Ignore Rider files (if using JetBrains Rider)
+.idea/
+
+# Ignore ASP.NET temporary files
+*.log
+*.tlog
+
+# Ignore Visual Studio Code workspace settings
+.vscode/
+
+# Ignore publish output
+publish/
+
+# Ignore Test Results
+TestResults/
+
+# Ignore database files
+*.mdf
+*.ldf
+
+# Ignore environment config files
+appsettings.Development.json
+appsettings.*.json
+
+# Ignore coverage reports
+coverage/
+*.coverage
+*.coveragexml
+
+# Ignore Docker local volumes
+docker-compose.override.yml
+
+# Ignore secrets
+secrets.json
+.env
+
+# Ignore JetBrains Rider solution-wide caches
+.idea/
+
+# Ignore temporary files from the OS
+Thumbs.db
+Desktop.ini
