@@ -9,24 +9,13 @@ using TaskStatus = TaskFlow.Domain.Enums.TaskStatus;
 
 namespace TaskFlow.Application.Services
 {
-    class TaskService : ITaskService
+    public class TaskService : ITaskService
     {
         private readonly List<TaskItem> _tasks = new(); // Temporary in-memory list
 
-        public async Task<TaskItem> CreateTaskAsync(string title, string description, Guid userId)
+        public async Task<TaskItem> CreateTaskAsync(TaskItem task)
         {
-            var task = new TaskItem
-            {
-                Id = Guid.NewGuid(),
-                Title = title,
-                Description = description,
-                UserId = userId,
-                CreatedAt = DateTime.UtcNow,
-                Status = TaskStatus.Pending
-            };
-
             _tasks.Add(task);
-
             return await Task.FromResult(task);
         }
 
@@ -36,18 +25,19 @@ namespace TaskFlow.Application.Services
             return await Task.FromResult<IEnumerable<TaskItem>>(userTaks);
         }
 
-        public  async Task<TaskItem> UpdateTaskAsync(Guid taskId, string title, string description, TaskStatus status)
+
+        public  async Task<TaskItem> UpdateTaskAsync(TaskItem task)
         {
-            var task = _tasks.SingleOrDefault(t => t.Id == taskId);
+            var taskUpdate = _tasks.SingleOrDefault(t => t.Id == task.Id);
 
             if (task == null)
             {
                 throw new Exception("Task not found");
             }
 
-            task.Title = title;
-            task.Description = description;
-            task.Status = status;
+            taskUpdate.Title = task.Title;
+            taskUpdate.Description = task.Description;
+            taskUpdate.Status = task.Status;
 
             return await Task.FromResult(task);
         }
@@ -64,5 +54,6 @@ namespace TaskFlow.Application.Services
             _tasks.Remove(task);
             return await Task.FromResult(true);
         }
+
     }
 }

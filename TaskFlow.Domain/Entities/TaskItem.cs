@@ -1,4 +1,6 @@
-﻿namespace TaskFlow.Domain.Entities
+﻿using TaskStatus = TaskFlow.Domain.Enums.TaskStatus;
+
+namespace TaskFlow.Domain.Entities
 {
     public class TaskItem
     {
@@ -7,7 +9,7 @@
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? DueDate { get; set; }
-        public Enums.TaskStatus Status { get; set; } = Enums.TaskStatus.Pending;
+        public TaskStatus Status { get; set; } = TaskStatus.Pending;
 
         // FK - ligação ao User
         public Guid UserId { get; set; }
