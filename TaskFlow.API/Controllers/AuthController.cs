@@ -30,14 +30,14 @@ namespace TaskFlow.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(string email, string password)
         {
-            var user = await _userService.LoginAsync(email, password);
-            if (user == null)
+            var token = await _userService.LoginAsync(email, password);
+            if (token == null)
             {
                 return Unauthorized(new {message = "Invalid username or password." });
             }
 
             // For now, just returning user. Later we will generate JWT token.
-            return Ok(new { token = user });
+            return Ok(new { token });
         }
     }
 }

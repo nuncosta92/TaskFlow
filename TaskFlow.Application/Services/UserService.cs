@@ -1,4 +1,7 @@
-﻿using TaskFlow.Application.Interfaces;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using TaskFlow.Application.Interfaces;
 using TaskFlow.Domain.Entities;
 
 namespace TaskFlow.Application.Services
@@ -6,6 +9,12 @@ namespace TaskFlow.Application.Services
     public class UserService : IUserService
     {
         private readonly List<User> _users = new(); // List in memory (for now, we'll switch to DB later)
+        private readonly IConfiguration _configuration;
+
+        public UserService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public async Task<User> RegisterAsync(string name, string email, string password)
         {
@@ -36,9 +45,24 @@ namespace TaskFlow.Application.Services
                 throw new Exception("Invalid email or password");
             }
 
-            var token = $"DUMMY_TOKEN_FOR_USER_{user.Id}"; // In a real app, generate a JWT or similar token here
+            var tokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]);
 
-            return await Task.FromResult(token);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new System.Security.Claims.ClaimsIdentity(new[]
+                {
+                new System.Security.Claims.Claim("id", user.Id.ToString()),
+                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Email, user.Email)
+            }),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var jwtToken = tokenHandler.WriteToken(token);
+
+            return await Task.FromResult(jwtToken);
         }
 
         private string HashPassword(string password)

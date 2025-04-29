@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TaskFlow.API.Models;
 using TaskFlow.Application.Interfaces;
 using TaskFlow.Domain.Entities;
@@ -16,13 +18,14 @@ namespace TaskFlow.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTask(CreateTaskRequest request)
+        public async Task<IActionResult> CreateTask([FromBody] CreateTaskRequest request)
         {
+
             var task = new TaskItem
             {
                 Title = request.Title,
                 Description = request.Description,
-                UserId = request.UserId,
+                UserId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value),
                 Status = request.Status
             };
 
@@ -33,7 +36,7 @@ namespace TaskFlow.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(500, "An error occurred while creating the task.");
             }
         }
 
@@ -73,8 +76,14 @@ namespace TaskFlow.API.Controllers
         }
 
         [HttpDelete("delete")]
+        [Authorize]
         public async Task<IActionResult> DeleteTask(Guid taskId)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
             try
             {
                 var result = await _taskService.DeleteTaskAsync(taskId);
