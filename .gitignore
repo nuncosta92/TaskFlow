@@ -34,6 +34,8 @@ TestResults/
 # Ignore database files
 *.mdf
 *.ldf
+*.db-wal
+*.db-shm
 
 # Ignore environment config files
 appsettings.Development.json
