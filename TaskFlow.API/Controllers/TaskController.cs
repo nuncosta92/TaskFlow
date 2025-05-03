@@ -83,7 +83,10 @@ namespace TaskFlow.API.Controllers
 
             try
             {
-                var updatedTask = await _taskService.UpdateTaskAsync(task);
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var userId = Guid.Parse(userIdClaim);
+
+                var updatedTask = await _taskService.UpdateTaskAsync(task, userId);
 
                 if (updatedTask == null)
                 {

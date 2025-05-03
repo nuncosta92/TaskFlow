@@ -1,4 +1,5 @@
 ﻿
+using System.Threading.Tasks;
 using TaskFlow.Domain.Entities;
 
 namespace TaskFlow.Application.Interfaces
@@ -7,7 +8,7 @@ namespace TaskFlow.Application.Interfaces
     {
         Task<TaskItem> CreateTaskAsync(TaskItem task);
         Task<IEnumerable<TaskItem>> GetTasksAsync(Guid userId);
-        Task<TaskItem> UpdateTaskAsync(TaskItem? task);
+        Task<TaskItem> UpdateTaskAsync(TaskItem? task, Guid userId);
         Task<bool> DeleteTaskAsync(Guid taskId);
     }
 }

@@ -1,13 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskFlow.Application.Interfaces;
 using TaskFlow.Domain.Entities;
 using TaskFlow.Infrastructure.Data;
-using TaskStatus = TaskFlow.Domain.Enums.TaskStatus;
 
 namespace TaskFlow.Application.Services
 {
@@ -38,20 +32,30 @@ namespace TaskFlow.Application.Services
         }
 
 
-        public  async Task<TaskItem> UpdateTaskAsync(TaskItem task)
+        public  async Task<TaskItem> UpdateTaskAsync(TaskItem task, Guid userId)
         {
-            var taskUpdate = _tasks.SingleOrDefault(t => t.Id == task.Id);
 
-            if (task == null)
+            // First, find the task by ID
+            var existingTask = await _context.Tasks
+                .Where(t => t.Id == task.Id)
+                .FirstOrDefaultAsync();
+
+            if (existingTask == null)
             {
                 throw new Exception("Task not found");
             }
 
-            taskUpdate.Title = task.Title;
-            taskUpdate.Description = task.Description;
-            taskUpdate.Status = task.Status;
+            // Checks if the task belongs to the authenticated user
+            if (existingTask.UserId != userId)
+            {
+                throw new Exception("You do not have permission to update this task.");
+            }
 
-            _context.Update(taskUpdate);
+            existingTask.Title = task.Title;
+            existingTask.Description = task.Description;
+            existingTask.Status = task.Status;
+
+            await _context.SaveChangesAsync();
 
             return task;
         }
