@@ -28,9 +28,9 @@ TaskFlow/
 
 
 ## Main Features
-- [ ] User Registration
-- [ ] Login and JWT Token Generation
-- [ ] CRUD for Tasks (Create, Read, Update, Delete)
+- [ x ] User Registration
+- [ x ] Login and JWT Token Generation
+- [ x ] CRUD for Tasks (Create, Read, Update, Delete)
 - [ ] Task Filtering and Sorting
 - [ ] Unit Testing Implementation
 - [ ] Docker and Azure Deployment (coming soon)
