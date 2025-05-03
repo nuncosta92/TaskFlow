@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskFlow.Application.Interfaces;
 using TaskFlow.Domain.Entities;
+using TaskFlow.Infrastructure.Data;
 using TaskStatus = TaskFlow.Domain.Enums.TaskStatus;
 
 namespace TaskFlow.Application.Services
@@ -12,20 +14,27 @@ namespace TaskFlow.Application.Services
     public class TaskService : ITaskService
     {
         private readonly List<TaskItem> _tasks = new(); // Temporary in-memory list
+        private readonly TaskFlowDbContext _context;
+
+        public TaskService(TaskFlowDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task<TaskItem> CreateTaskAsync(TaskItem task)
         {
-            _tasks.Add(task);
-            return await Task.FromResult(task);
+
+            await _context.Tasks.AddAsync(task);
+            await _context.SaveChangesAsync();
+
+            return task;
         }
 
         public async Task<IEnumerable<TaskItem>> GetTasksAsync(Guid userId)
         {
-            var userTaks = _tasks
+            return await _context.Tasks
                 .Where(t => t.UserId == userId)
-                .ToList();
-
-            return await Task.FromResult<IEnumerable<TaskItem>>(userTaks);
+                .ToListAsync();
         }
 
 
@@ -42,7 +51,9 @@ namespace TaskFlow.Application.Services
             taskUpdate.Description = task.Description;
             taskUpdate.Status = task.Status;
 
-            return await Task.FromResult(task);
+            _context.Update(taskUpdate);
+
+            return task;
         }
 
         public async Task<bool> DeleteTaskAsync(Guid taskId)
@@ -54,8 +65,9 @@ namespace TaskFlow.Application.Services
                 throw new Exception("Task not found");
             }
 
-            _tasks.Remove(task);
-            return await Task.FromResult(true);
+            _context.Remove(task);
+
+            return true;
         }
 
     }

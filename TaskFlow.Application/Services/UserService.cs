@@ -1,19 +1,24 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 using TaskFlow.Application.Interfaces;
 using TaskFlow.Domain.Entities;
+using TaskFlow.Infrastructure.Data;
 
 namespace TaskFlow.Application.Services
 {
     public class UserService : IUserService
     {
-        private readonly List<User> _users = new(); // List in memory (for now, we'll switch to DB later)
+        private readonly List<User> _users = new();
         private readonly IConfiguration _configuration;
+        private readonly TaskFlowDbContext _context;
 
-        public UserService(IConfiguration configuration)
+        public UserService(IConfiguration configuration, TaskFlowDbContext context)
         {
             _configuration = configuration;
+            _context = context;
         }
 
         public async Task<User> RegisterAsync(string name, string email, string password)
@@ -31,14 +36,15 @@ namespace TaskFlow.Application.Services
                 PasswordHash = HashPassword(password)
             };
 
-            _users.Add(user);
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
 
-            return await Task.FromResult(user);
+            return user;
         }
 
         public async Task<string> LoginAsync(string email, string password)
         {
-            var user = _users.SingleOrDefault(u => u.Email == email);
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email == email);
 
             if (user == null || !VerifyPassword(password, user.PasswordHash))
             {
@@ -50,19 +56,18 @@ namespace TaskFlow.Application.Services
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new System.Security.Claims.ClaimsIdentity(new[]
+                Subject = new ClaimsIdentity(new[]
                 {
-                    new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Email, user.Email)
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            var jwtToken = tokenHandler.WriteToken(token);
 
-            return await Task.FromResult(jwtToken);
+            return tokenHandler.WriteToken(token);
         }
 
         private string HashPassword(string password)

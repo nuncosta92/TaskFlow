@@ -1,11 +1,16 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TaskFlow.Application.Interfaces;
+using TaskFlow.Infrastructure.Data;
 using TaskFlow.Application.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<TaskFlowDbContext>(options =>
+    options.UseInMemoryDatabase("TaskFlowDb"));
 
 // Add Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -63,8 +68,8 @@ builder.Services.AddSwaggerGen(option =>
 });
 
 // Register services
-builder.Services.AddSingleton<IUserService, UserService>();
-builder.Services.AddSingleton<ITaskService, TaskService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 var app = builder.Build();
 
