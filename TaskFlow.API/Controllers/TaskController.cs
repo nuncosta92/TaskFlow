@@ -21,6 +21,14 @@ namespace TaskFlow.API.Controllers
         public async Task<IActionResult> CreateTask([FromBody] CreateTaskRequest request)
         {
 
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdClaim))
+            {
+                return Unauthorized("It was not possible to obtain the user ID from the token.");
+            }
+
+
             var task = new TaskItem
             {
                 Title = request.Title,
@@ -41,9 +49,24 @@ namespace TaskFlow.API.Controllers
         }
 
         [HttpGet("get")]
-        public async Task<IActionResult> GetTasks(Guid userId)
+        public async Task<IActionResult> GetTasks()
         {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userIdClaim))
+            {
+                return Unauthorized("User ID not found in token.");
+            }
+
+            var userId = Guid.Parse(userIdClaim);
+
             var tasks = await _taskService.GetTasksAsync(userId);
+
+            if (tasks == null || !tasks.Any())
+            {
+                return NotFound("No tasks found for this user.");
+            }
+
             return Ok(tasks);
         }
 

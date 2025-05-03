@@ -52,9 +52,9 @@ namespace TaskFlow.Application.Services
             {
                 Subject = new System.Security.Claims.ClaimsIdentity(new[]
                 {
-                new System.Security.Claims.Claim("id", user.Id.ToString()),
-                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Email, user.Email)
-            }),
+                    new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Email, user.Email)
+                }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

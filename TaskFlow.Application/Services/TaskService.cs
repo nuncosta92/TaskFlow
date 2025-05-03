@@ -21,7 +21,10 @@ namespace TaskFlow.Application.Services
 
         public async Task<IEnumerable<TaskItem>> GetTasksAsync(Guid userId)
         {
-            var userTaks = _tasks.Where(t => t.UserId == userId).ToList();
+            var userTaks = _tasks
+                .Where(t => t.UserId == userId)
+                .ToList();
+
             return await Task.FromResult<IEnumerable<TaskItem>>(userTaks);
         }
 
